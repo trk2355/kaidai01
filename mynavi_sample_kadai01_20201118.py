@@ -47,15 +47,16 @@ def main():
     status_list=driver.find_elements_by_class_name("labelEmploymentStatus")
 
     #課題1：会社名以外の項目を取得
-    body_list=driver.find_elements_by_class_name("tableCondition").find_element_by_class_name("tableCondition__body:nth-of-type(4)")
- 
+    table_list=driver.find_elements_by_class_name("tableCondition")
+          
     # 1ページ分繰り返し
-    print("{},{},{},{}".format(len(copy_list),len(status_list),len(name_list),len(body_list)))
-    for name,copy,status,body in zip(name_list,copy_list,status_list,body_list):
+    print("{},{},{},{}".format(len(name_list),len(copy_list),len(status_list),len(table_list)))
+    for name,copy,status,table in zip(name_list,copy_list,status_list,table_list):
+        table.find_elements_by_class_name("tableCondition__body")[1]
         print(name.text)
         print(copy.text)
         print(status.text)
-        print(body.text)
+        print(table.text)
 
 
 ### 直接起動された場合はmain()を起動(モジュールとして呼び出された場合は起動しないようにするため)
